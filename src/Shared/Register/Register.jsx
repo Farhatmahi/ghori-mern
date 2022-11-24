@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUser } = useContext(AuthContext);
   const [error, setError] = useState("");
   const {
     register,
@@ -13,17 +13,45 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  
+
   const handleRegister = (data) => {
+    console.log(data);
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
+        const userInfo = {
+          displayName : data.name
+        }
+        updateUser(userInfo)
+        .then(result => {
+          saveToDatabase(data.fullName, data.email, data.user)
+        }).catch(err => {})
+        
       })
       .catch((err) => {
         console.log(err.message);
         setError("Incorrect Password");
       });
   };
+
+
+  const saveToDatabase = (name, email, user) => {
+    const person = {name, email, user}
+    fetch('http://localhost:2000/users', {
+      method : "POST",
+      headers : {
+        "content-type" : 'application/json'
+      },
+      body : JSON.stringify(person)
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+    
+
+  }
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -87,6 +115,16 @@ const Register = () => {
                 </p>
               )}
             </div>
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">What are you?</span>
+              </label>
+              <select className="input input-bordered w-full" {...register("user")}>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+              </select>
+            </div>
+
             <p className="text-xs text-center my-4">
               New here?{" "}
               <Link
@@ -97,9 +135,8 @@ const Register = () => {
               </Link>
             </p>
 
-            <input type="submit" className="btn btn-primary w-full" />
+            <input type="submit" className="btn btn-outline w-full" />
           </form>
-          
         </div>
       </div>
     </div>

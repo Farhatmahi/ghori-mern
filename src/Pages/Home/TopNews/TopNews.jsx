@@ -16,8 +16,8 @@ const TopNews = () => {
 
     return (
         <div>
-            <h1 className="text-5xl mb-8">Top News</h1>
-            <div className="grid grid-cols-3">
+            <h1 className="text-4xl lg:text-5xl text-center lg:text-left mb-8">Top News</h1>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {news.map(n => <TopNewsCard key={n._id} n={n} />)}
             </div>
         </div>

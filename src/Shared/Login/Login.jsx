@@ -39,7 +39,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero h-[600px]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="ml-20 w-1/2 text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login</h1>
@@ -93,9 +93,9 @@ const Register = () => {
               </Link>
             </p>
 
-            <input type="submit" className="btn btn-primary w-full" />
+            <input type="submit" className="btn btn-outline w-full" />
             <div className="divider">OR</div>
-            <button onClick={handleGoogle} className="btn btn-primary w-100">
+            <button onClick={handleGoogle} className="btn btn-outline w-100">
               Continue with Google<FcGoogle className="ml-2" />
             </button>
           </form>

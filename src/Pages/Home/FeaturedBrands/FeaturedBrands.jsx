@@ -20,9 +20,9 @@ const FeaturedBrands = () => {
 
   return (
     <div>
-      <h1 className="text-5xl mb-2">Browse By Brands</h1>
-      <p className="mb-8">We got a lot of collections</p>
-      <div className="grid grid-cols-4">
+      <h1 className="text-4xl lg:text-5xl mb-2 text-center lg:text-left">Browse By Brands</h1>
+      <p className="mb-8 text-center lg:text-left">We got a lot of collections</p>
+      <div className="grid grid-cols-2 lg:grid-cols-4">
         {brands.map((brand) => (
           <BrandCard key={brand._id} brand={brand} />
         ))}

@@ -1,4 +1,6 @@
 import Main from "../Layout/Main";
+import Blogs from "../Pages/Blogs/Blogs";
+import BrandProducts from "../Pages/BrandProducts/BrandProducts";
 import Login from "../Shared/Login/Login";
 import Register from "../Shared/Register/Register";
 
@@ -21,6 +23,15 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/brand/:id",
+        loader : async({params}) => fetch(`http://localhost:2000/allProducts/${params.id}`),
+        element: <BrandProducts />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
       },
     ],
   },
