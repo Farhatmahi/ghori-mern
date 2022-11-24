@@ -4,7 +4,8 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Header = () => {
 
-  const {logOut} = useContext(AuthContext)
+  const {user, logOut} = useContext(AuthContext)
+
 
   //temporary logout
   const handleLogOut = (e) => {
@@ -105,7 +106,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link onClick={handleLogOut} className="btn">Log Out</Link>
+        {user?.uid && <Link onClick={handleLogOut} className="btn">Log Out</Link>}
       </div>
     </div>
   );

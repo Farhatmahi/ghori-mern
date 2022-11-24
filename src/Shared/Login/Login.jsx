@@ -3,9 +3,10 @@ import { AuthContext } from "../../context/AuthProvider";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
-  const { login } = useContext(AuthContext);
+  const { login, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
   const {
     register,
@@ -25,14 +26,24 @@ const Register = () => {
       });
   };
 
+  const handleGoogle = (e) => {
+    e.preventDefault();
+    signInWithGoogle()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="ml-20 w-1/2 text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login</h1>
-          <p className="py-6">
-            To get access to all the cool features
-          </p>
+          <p className="py-6">To get access to all the cool features</p>
         </div>
         <div className="w-1/2 flex-shrink-0 max-w-sm border border-yellow-500 p-10">
           <form onSubmit={handleSubmit(handleLogin)}>
@@ -83,8 +94,11 @@ const Register = () => {
             </p>
 
             <input type="submit" className="btn btn-primary w-full" />
+            <div className="divider">OR</div>
+            <button onClick={handleGoogle} className="btn btn-primary w-100">
+              Continue with Google<FcGoogle className="ml-2" />
+            </button>
           </form>
-          
         </div>
       </div>
     </div>
