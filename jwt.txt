@@ -1,0 +1,3 @@
+1. backend e api banaite hobe /jwt diye jetar query hobe email
+2. frondend e api ta fetch korte hobe login ar register korar shomoy.
+3. frontend e api fetch korar somoy headers e accessToken ta pathaite hobe,

@@ -7,7 +7,7 @@ import DashboardNav from "./DashboardNav";
 const DashboardLayout = () => {
   return (
     <div>
-        <DashboardNav />
+      <DashboardNav />
       <div className="drawer drawer-mobile">
         <input id="side-nav-btn" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">

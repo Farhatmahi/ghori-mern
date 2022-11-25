@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import BrandProducts from "../Pages/BrandProducts/BrandProducts";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import Login from "../Shared/Login/Login";
 import Register from "../Shared/Register/Register";
 import PrivateRoute from "./PrivateRoute";
@@ -41,7 +42,7 @@ const routes = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children : [{
           path : '/dashboard',
-          element : <Dashboard />
+          element : <MyOrders />
         }]
       },
     ],

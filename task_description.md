@@ -22,7 +22,7 @@ Your website has to be related to selling used (second-hand products) with the a
 the time when it got posted,
 <!-- *Please note, category:/id will be a private route*  -->
 
-5. On clicking the Book now button, a form in a modal will popup with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked.
+<!-- 5. On clicking the Book now button, a form in a modal will popup with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked. -->
 
 
 
@@ -30,7 +30,6 @@ the time when it got posted,
 
 <!-- Users logged in by using social media will be considered as buyers.  -->
 
-      **Note:** Do not apply email verification as it will be an inconvenience for the examiner. It is important for the examiner to be able to check your authentication without any hassle. If you want, you can add email verification after getting the assignment result.
 
 7. If a user(buyer/seller/admin) is logged in, they will see **logout** (should be working) and another option on the header called Dashboard. The dashboard routes will change based on the users:
 
@@ -50,7 +49,7 @@ the time when it got posted,
 
 12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers.
 
-13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
+<!-- 13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
 
       13.1 What are the different ways to manage a state in a React application?
   
@@ -58,11 +57,11 @@ the time when it got posted,
   
       13.3 What is a unit test? Why should we write unit tests?
   
-      13.4 React vs. Angular vs. Vue?
+      13.4 React vs. Angular vs. Vue? -->
 
 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
 
-15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database
+<!-- 15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database -->
 
 ## Bonus Requirements
 
@@ -84,11 +83,11 @@ the time when it got posted,
 
       Once an item is paid, it won't be displayed on the advertised item or on the category page. Only available items will be displayed to be purchased.
 
-8. Use react query for at least two API calls.Use Axios for at least one API call
+<!-- 8. Use react query for at least two API calls.Use Axios for at least one API call -->
 
 9. Most likely framework will do it for you. However do not forget to make your entire website responsive. (It is ok if the table is not responsive.) please note, all the pages including dashboard will be responsive.
 
-10. Database collection names, routes, mongdb features/operators when needed, api naming convension and best practices.
+<!-- 10. Database collection names, routes, mongdb features/operators when needed, api naming convension and best practices. -->
 
 ### Optional
 

@@ -13,9 +13,13 @@ const BrandProducts = () => {
 
   const [brand, setBrand] = useState();
   const [hideModal, setHideModal] = useState(null);
-  console.log(hideModal);
+  // console.log(hideModal);
   useEffect(() => {
-    fetch("http://localhost:2000/brands")
+    fetch("http://localhost:2000/brands", {
+      headers : {
+        authorization : `bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => setBrand(data));
   }, []);

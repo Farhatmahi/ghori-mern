@@ -28,7 +28,7 @@ const Register = () => {
         updateUser(userInfo)
           .then((result) => {
             saveToDatabase(data.fullName, data.email, data.user);
-            navigate('/')
+            
             toast.success(`Welcome, ${data.fullName}`)
           })
           .catch((err) => {});
@@ -66,8 +66,25 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        getUserToken(email) //for jwt 
       });
   };
+
+  //this function will take email as parameter, fetch the jwt api and gonna check if accessToken (has to be same name like backend) is found or not, if found, it'll set it to localStorage.
+
+  //then we'll have to call the function to other fetch
+  const getUserToken = (email) => {
+    fetch(`http://localhost:2000/jwt?email=${email}`)
+    .then(res => res.json())
+    .then(data => {
+      if(data.accessToken){
+        localStorage.setItem('accessToken', data.accessToken);
+        navigate('/')
+      }
+    })
+  }
+
+  
 
  
 
