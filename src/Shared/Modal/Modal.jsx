@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider";
 
-const Modal = ({ product, hideModal, setHideModal }) => {
-  const { product_name, resale_price } = product;
+const Modal = ({ hideModal, setHideModal }) => {
   const { user } = useContext(AuthContext);
+  const {product_name,
+    resale_price,
+ } = hideModal
 
   const handleSubmit = (e) => {
     e.preventDefault();

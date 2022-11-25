@@ -1,3 +1,4 @@
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import BrandProducts from "../Pages/BrandProducts/BrandProducts";
@@ -37,7 +38,11 @@ const routes = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
+        children : [{
+          path : '/dashboard',
+          element : <Dashboard />
+        }]
       },
     ],
   },

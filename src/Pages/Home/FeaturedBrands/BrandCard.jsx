@@ -1,10 +1,10 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import { Link } from "react-router-dom";
+
+export const brand_id_context = createContext();
 
 const BrandCard = ({ brand }) => {
   const { brand_id, brand_name, img } = brand;
-
-
 
   return (
     <Link to={`/brand/${brand_id}`}>

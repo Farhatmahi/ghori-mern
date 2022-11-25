@@ -3,12 +3,13 @@ import { AuthContext } from "../../context/AuthProvider";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { login, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -20,6 +21,8 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast(`Welcome back, ${user.displayName}`);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err.message);
@@ -33,6 +36,8 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate("/");
+        toast(`Welcome back, ${user.displayName}`);
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +102,8 @@ const Register = () => {
             <input type="submit" className="btn btn-outline w-full" />
             <div className="divider">OR</div>
             <button onClick={handleGoogle} className="btn btn-outline w-full">
-              Continue with Google<FcGoogle className="ml-2" />
+              Continue with Google
+              <FcGoogle className="ml-2" />
             </button>
           </form>
         </div>

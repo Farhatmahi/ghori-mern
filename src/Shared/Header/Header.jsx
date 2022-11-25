@@ -88,13 +88,15 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 hidden lg:block">
         <div className="navbar-start"></div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
         <div className="navbar-end"></div>
+        
       </div>
+      
     </div>
   );
 };

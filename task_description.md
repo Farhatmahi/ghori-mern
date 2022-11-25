@@ -28,7 +28,7 @@ the time when it got posted,
 
 <!-- 6. Your navbar will have a **login** button. Implement email/password-based authentication and at least one social login(google, Facebook, GitHub, etc.) authentication. **Create an extra field for options. There will be two options: a radio button, a dropdown, a toggle button, etc. If the user creates a seller account, he will choose the seller option. Otherwise, a normal user will have the user option selected by default**.  -->
 
-Users logged in by using social media will be considered as buyers. 
+<!-- Users logged in by using social media will be considered as buyers.  -->
 
       **Note:** Do not apply email verification as it will be an inconvenience for the examiner. It is important for the examiner to be able to check your authentication without any hassle. If you want, you can add email verification after getting the assignment result.
 
