@@ -3,7 +3,7 @@ import { TfiLayoutSidebarLeft } from 'react-icons/tfi';
 
 const DashboardNav = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 lg:hidden">
       <label
           tabIndex={0}
           className="btn btn-ghost border border-yellow-500 lg:hidden"

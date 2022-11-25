@@ -3,18 +3,29 @@ import { AuthContext } from "../../context/AuthProvider";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken/useToken";
 
 const Register = () => {
-  const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
+  const { user, createUser, updateUser, signInWithGoogle } =
+    useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const [createdUserEmail, setCreatedUserEmail] = useState(); //to get the email for useToken
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const [token] = useToken(createdUserEmail);
+
+  if (token) {
+    navigate("/");
+  }
 
   const handleRegister = (data) => {
     console.log(data);
@@ -28,8 +39,8 @@ const Register = () => {
         updateUser(userInfo)
           .then((result) => {
             saveToDatabase(data.fullName, data.email, data.user);
-            
-            toast.success(`Welcome, ${data.fullName}`)
+            setCreatedUserEmail(data.email);
+            toast.success(`Welcome, ${data.fullName}`);
           })
           .catch((err) => {});
       })
@@ -45,9 +56,9 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        saveToDatabase(user.displayName, user.email, "buyer")
-        navigate('/')
-        toast.success(`Welcome, ${user.displayName}`)
+        saveToDatabase(user.displayName, user.email, "buyer");
+        setCreatedUserEmail(user.email);
+        toast.success(`Welcome, ${user.displayName}`);
       })
       .catch((err) => {
         console.log(err);
@@ -66,27 +77,8 @@ const Register = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        getUserToken(email) //for jwt 
       });
   };
-
-  //this function will take email as parameter, fetch the jwt api and gonna check if accessToken (has to be same name like backend) is found or not, if found, it'll set it to localStorage.
-
-  //then we'll have to call the function to other fetch
-  const getUserToken = (email) => {
-    fetch(`http://localhost:2000/jwt?email=${email}`)
-    .then(res => res.json())
-    .then(data => {
-      if(data.accessToken){
-        localStorage.setItem('accessToken', data.accessToken);
-        navigate('/')
-      }
-    })
-  }
-
-  
-
- 
 
   return (
     <div className="hero h-[600px]">

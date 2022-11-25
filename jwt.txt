@@ -1,3 +1,5 @@
 1. backend e api banaite hobe /jwt diye jetar query hobe email
 2. frondend e api ta fetch korte hobe login ar register korar shomoy.
-3. frontend e api fetch korar somoy headers e accessToken ta pathaite hobe,
+3. frontend e api fetch korar somoy headers e accessToken ta pathaite hobe
+4. make a useToken hook and put everything of step 2 inside of it
+5.

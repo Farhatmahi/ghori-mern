@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken/useToken";
 
 const Register = () => {
   const { login, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [loginUserEmail, setloginUserEmail] = useState('')
+  const [token] = useToken(loginUserEmail)
   const navigate = useNavigate();
   const {
     register,
@@ -16,13 +19,17 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  if(token){
+    navigate('/')
+  }
+
   const handleLogin = (data) => {
     login(data.email, data.password)
       .then((result) => {
         const user = result.user;
         console.log(user);
         toast(`Welcome back, ${user.displayName}`);
-        navigate("/");
+        setloginUserEmail(user.email)
       })
       .catch((err) => {
         console.log(err.message);
@@ -36,7 +43,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate("/");
+        setloginUserEmail(user.email)
         toast(`Welcome back, ${user.displayName}`);
       })
       .catch((err) => {
