@@ -1,8 +1,10 @@
 import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import BrandProducts from "../Pages/BrandProducts/BrandProducts";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import Login from "../Shared/Login/Login";
 import Register from "../Shared/Register/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Pages/Home/Home/Home");
@@ -27,11 +29,15 @@ const routes = createBrowserRouter([
       {
         path: "/brand/:id",
         loader : async({params}) => fetch(`http://localhost:2000/allProducts/${params.id}`),
-        element: <BrandProducts />,
+        element: <PrivateRoute><BrandProducts /></PrivateRoute>,
       },
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
       },
     ],
   },

@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
   const { login, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -95,7 +96,7 @@ const Register = () => {
 
             <input type="submit" className="btn btn-outline w-full" />
             <div className="divider">OR</div>
-            <button onClick={handleGoogle} className="btn btn-outline w-100">
+            <button onClick={handleGoogle} className="btn btn-outline w-full">
               Continue with Google<FcGoogle className="ml-2" />
             </button>
           </form>
