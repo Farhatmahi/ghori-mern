@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
-import { Watch } from "react-loader-spinner";
 import Loading from "../Shared/Loading/Loading";
 
 const PrivateRoute = ({ children }) => {
@@ -10,7 +9,7 @@ const PrivateRoute = ({ children }) => {
 
   if (loading) {
     console.log("Loading happened");
-    <Loading />;
+    return <Loading />;
   }
 
   if (user) {

@@ -2,6 +2,8 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
 import BrandProducts from "../Pages/BrandProducts/BrandProducts";
+import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
+import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import Login from "../Shared/Login/Login";
@@ -30,8 +32,13 @@ const routes = createBrowserRouter([
       },
       {
         path: "/brand/:id",
-        loader : async({params}) => fetch(`http://localhost:2000/allProducts/${params.id}`),
-        element: <PrivateRoute><BrandProducts /></PrivateRoute>,
+        loader: async ({ params }) =>
+          fetch(`http://localhost:2000/allProducts/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <BrandProducts />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/blogs",
@@ -39,11 +46,26 @@ const routes = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
-        children : [{
-          path : '/dashboard',
-          element : <MyOrders />
-        }]
+        element: (
+          <PrivateRoute>
+            <DashboardLayout />
+          </PrivateRoute>
+        ),
+        children: [
+          {
+            path: "/dashboard",
+            element: <MyOrders />,
+          },
+          {
+            path: "/dashboard/all-sellers",
+            element: <AllSellers />,
+            
+          },
+          {
+            path: "/dashboard/all-buyers",
+            element: <AllBuyers />,
+          },
+        ],
       },
     ],
   },

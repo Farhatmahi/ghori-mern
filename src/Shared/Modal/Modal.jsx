@@ -6,6 +6,7 @@ const Modal = ({ hideModal, setHideModal }) => {
   const { user } = useContext(AuthContext);
   const {product_name,
     resale_price,
+    product_img
  } = hideModal
 
   const handleSubmit = (e) => {
@@ -24,6 +25,7 @@ const Modal = ({ hideModal, setHideModal }) => {
       location,
       product_name,
       resale_price,
+      product_img
     };
 
     fetch("http://localhost:2000/booking", {

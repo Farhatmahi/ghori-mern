@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken/useToken";
@@ -13,15 +13,23 @@ const Register = () => {
   const [loginUserEmail, setloginUserEmail] = useState('')
   const [token] = useToken(loginUserEmail)
   const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  if(token){
-    navigate('/')
-  }
+
+  //importantxp
+  useEffect(() => {
+    if(token){
+      navigate(from, {replace : true})
+    }
+  }, [navigate, token, from])
+
+
 
   const handleLogin = (data) => {
     login(data.email, data.password)

@@ -1,5 +1,6 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 import Footer from "../Shared/Footer/Footer";
 import Header from "../Shared/Header/Header";
 import DashboardNav from "./DashboardNav";
@@ -17,11 +18,15 @@ const DashboardLayout = () => {
           <label htmlFor="side-nav-btn" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             <li>
-              <a>Sidebar Item 1</a>
+              <Link to="/dashboard">My Orders</Link>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link to="/dashboard/all-sellers">All Sellers</Link>
             </li>
+            <li>
+              <Link to="/dashboard/all-buyers">All Buyers</Link>
+            </li>
+            
           </ul>
         </div>
       </div>

@@ -38,7 +38,7 @@ const Register = () => {
         };
         updateUser(userInfo)
           .then((result) => {
-            saveToDatabase(data.fullName, data.email, data.user);
+            saveToDatabase(data.fullName, data.email, data.role);
             setCreatedUserEmail(data.email);
             toast.success(`Welcome, ${data.fullName}`);
           })
@@ -65,8 +65,8 @@ const Register = () => {
       });
   };
 
-  const saveToDatabase = (name, email, user) => {
-    const person = { name, email, user };
+  const saveToDatabase = (name, email, role) => {
+    const person = { name, email, role };
     fetch("http://localhost:2000/users", {
       method: "POST",
       headers: {
@@ -148,7 +148,7 @@ const Register = () => {
               </label>
               <select
                 className="input input-bordered w-full"
-                {...register("user")}
+                {...register("role")}
               >
                 <option value="buyer">Buyer</option>
                 <option value="seller">Seller</option>
