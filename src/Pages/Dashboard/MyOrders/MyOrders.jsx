@@ -34,6 +34,7 @@ const MyOrders = () => {
         <table className="table w-full">
           <thead>
             <tr>
+              <th>Serial</th>
               <th>Product Image</th>
               <th>Product name</th>
               <th>Price</th>
@@ -41,8 +42,9 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {myOrders?.map((orders) => (
+            {myOrders?.map((orders, i) => (
               <tr className="hover">
+                <th>{i+1}</th>
                 <th>
                   <img src={orders.product_img} className="w-24" alt="" />
                 </th>

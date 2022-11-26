@@ -30,7 +30,7 @@ const BrandProducts = () => {
 
   // console.log(brand)
 
-  // const {data : products = []} = useQuery({
+  // const {data : products = []} = useQuery({t
   //   queryKey : ['products', products[0].brand_id],
   //   queryFn : async() => {
   //     const res = await fetch(`http://localhost:2000/allProducts/${products[0].brand_id}`)
