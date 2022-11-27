@@ -1,25 +1,36 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import Loading from "../../../Shared/Loading/Loading";
 
 const MyOrders = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  // const [myOrders, setMyOrders] = useState({})
 
   const { data: myOrders = [], isLoading } = useQuery({
     queryKey: ["myOrders", user?.email],
-    queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:2000/orders?email=${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          },
+    queryFn: () => {
+      // const res = await fetch(
+      //   `http://localhost:2000/orders?email=${user?.email}`,
+      //   {
+      //     headers: {
+      //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      //     },
+      //   }
+      // );
+      // const data = await res.json();
+      // console.log(data);
+      // return data;
+      fetch(`http://localhost:2000/orders?email=${user?.email}`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }).then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          logOut();
         }
-      );
-      const data = await res.json();
-      console.log(data);
-      return data;
+        return res.json();
+      });
     },
   });
 
@@ -44,7 +55,7 @@ const MyOrders = () => {
           <tbody>
             {myOrders?.map((orders, i) => (
               <tr className="hover">
-                <th>{i+1}</th>
+                <th>{i + 1}</th>
                 <th>
                   <img src={orders.product_img} className="w-24" alt="" />
                 </th>

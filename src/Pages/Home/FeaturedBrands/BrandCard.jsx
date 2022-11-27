@@ -1,9 +1,11 @@
 import React, { createContext, useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 
 export const brand_id_context = createContext();
 
 const BrandCard = ({ brand }) => {
+  const {logOut} = useContext(AuthContext)
   const { brand_id, brand_name, img } = brand;
 
   return (

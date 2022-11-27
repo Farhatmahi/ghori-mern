@@ -70,7 +70,7 @@ const Header = () => {
             <Link className="flex items-center">
               <div className="avatar">
                 <div className="w-8 lg:w-12 rounded-full">
-                  <img src={user?.photoURL} alt="" />
+                  <img src={user?.photoURL || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'} alt="" />
                 </div>
               </div>
               <button
