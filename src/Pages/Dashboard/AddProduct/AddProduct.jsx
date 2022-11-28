@@ -64,6 +64,7 @@ const AddProduct = () => {
             brand_id: brand_id,
             date_posted : date,
             isAvailable : true,
+            location : data.location
           };
           console.log(product);
           //save products to db
