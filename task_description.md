@@ -35,9 +35,9 @@ the time when it got posted,
 
       **Buyers will see:** My orders(see bonus requirement 7),
 
-      **Sellers will see:** Add A product (See Requirement 8), My Products(see requirement 9), My buyers(this one is optional).
+      <!-- **Sellers will see:** Add A product (See Requirement 8), My Products(see requirement 9), My buyers(this one is optional). -->
 
-      **Admin will see:** All Sellers, All Buyers (see requirement 12), Reported Items
+      <!-- **Admin will see:** All Sellers, All Buyers (see requirement 12), Reported Items -->
 
 8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page.
 
@@ -47,7 +47,7 @@ the time when it got posted,
 
 11. " **My buyers" are optional.** See the optional section for details. On this page, a seller will see the buyer's phone, name, email address, and location.
 
-12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers.
+<!-- 12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers. -->
 
 <!-- 13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
 
@@ -59,7 +59,7 @@ the time when it got posted,
   
       13.4 React vs. Angular vs. Vue? -->
 
-14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
+<!-- 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page. -->
 
 <!-- 15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database -->
 
@@ -107,6 +107,6 @@ the time when it got posted,
 
 adminEmail: \<your admin email\>
 
-adminPassword: \<your admin password\>
+adminPassword: \<your admin password\>zx
 
 Otherwise, you won't get any marks for your admin routes.

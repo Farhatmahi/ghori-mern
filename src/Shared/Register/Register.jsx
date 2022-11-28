@@ -89,7 +89,7 @@ const Register = () => {
             Register now to get access to all the cool features
           </p>
         </div>
-        <div className="w-1/2 flex-shrink-0 max-w-sm border border-yellow-500 p-10">
+        <div className="w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
           <form onSubmit={handleSubmit(handleRegister)}>
             <div className="form-control w-full ">
               <label className="label">

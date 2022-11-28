@@ -4,7 +4,7 @@ import { FcApproval } from "react-icons/fc";
 const ProductCard = ({ product, setHideModal }) => {
   const {
     product_name,
-    brand,
+    brand_name,
     original_price,
     resale_price,
     product_img,
@@ -22,7 +22,7 @@ const ProductCard = ({ product, setHideModal }) => {
       <div className="card-body">
         <div className="flex flex-row justify-between items-center">
           <h2 className="card-title text-center">{product_name}</h2>
-          <div className="badge badge-outline">{brand}</div>
+          <div className="badge badge-outline">{brand_name}</div>
         </div>
 
         <p>Price : ${resale_price}</p>

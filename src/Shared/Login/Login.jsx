@@ -10,26 +10,23 @@ import useToken from "../../hooks/useToken/useToken";
 const Register = () => {
   const { login, signInWithGoogle } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const [loginUserEmail, setloginUserEmail] = useState('')
-  const [token] = useToken(loginUserEmail)
+  const [loginUserEmail, setloginUserEmail] = useState("");
+  const [token] = useToken(loginUserEmail);
   const navigate = useNavigate();
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/'
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-
   //importantxp
   useEffect(() => {
-    if(token){
-      navigate(from, {replace : true})
+    if (token) {
+      navigate(from, { replace: true });
     }
-  }, [navigate, token, from])
-
-
+  }, [navigate, token, from]);
 
   const handleLogin = (data) => {
     login(data.email, data.password)
@@ -37,7 +34,7 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         toast(`Welcome back, ${user.displayName}`);
-        setloginUserEmail(user.email)
+        setloginUserEmail(user.email);
       })
       .catch((err) => {
         console.log(err.message);
@@ -51,7 +48,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        setloginUserEmail(user.email)
+        setloginUserEmail(user.email);
         toast(`Welcome back, ${user.displayName}`);
       })
       .catch((err) => {
@@ -66,7 +63,7 @@ const Register = () => {
           <h1 className="text-5xl font-bold">Login</h1>
           <p className="py-6">To get access to all the cool features</p>
         </div>
-        <div className="w-1/2 flex-shrink-0 max-w-sm border border-yellow-500 p-10">
+        <div className="w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
           <form onSubmit={handleSubmit(handleLogin)}>
             <div className="form-control w-full">
               <label className="label">
