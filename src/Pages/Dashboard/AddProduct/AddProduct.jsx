@@ -62,7 +62,7 @@ const AddProduct = () => {
             email: user.email,
             brand_id: brand_id,
             date_posted: date,
-            isAvailable: true,
+            advertise : false,
             location: data.location,
           };
           console.log(product);
