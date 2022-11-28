@@ -60,11 +60,11 @@ const Register = () => {
   return (
     <div className="hero h-[600px]">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="ml-20 w-1/2 text-center lg:text-left">
+        <div className="lg:ml-20 lg:w-1/2 text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login</h1>
           <p className="py-6">To get access to all the cool features</p>
         </div>
-        <div className="w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
+        <div className="lg:w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
           <form onSubmit={handleSubmit(handleLogin)}>
             <div className="form-control w-full">
               <label className="label">

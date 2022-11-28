@@ -89,15 +89,15 @@ const Register = () => {
   };
 
   return (
-    <div className="hero h-[600px]">
+    <div className="hero min-h-screen lg:h-[600px]">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div className="ml-20 w-1/2 text-center lg:text-left">
-          <h1 className="text-5xl font-bold">New here!</h1>
-          <p className="py-6">
+        <div className="lg:ml-20 lg:w-1/2 text-center lg:text-left">
+          <h1 className="text-4xl lg:text-5xl font-bold">New here!</h1>
+          <p className="lg:py-6 pb-8">
             Register now to get access to all the cool features
           </p>
         </div>
-        <div className="w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
+        <div className="lg:w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
           <form onSubmit={handleSubmit(handleRegister)}>
             <div className="form-control w-full ">
               <label className="label">
