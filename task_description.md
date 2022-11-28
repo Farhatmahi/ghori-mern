@@ -19,7 +19,7 @@ Your website has to be related to selling used (second-hand products) with the a
 <!-- 3. **You will have to decide what would be the categories of the second-hand product you have selected.** For instance, if your website is about second-hand furniture, you can divide your categories into the bedroom, kitchen, dining room, etc.; if it is about second-hand car, your categories can be a Microbus, luxury car, electic car, etc. Or you can categorize second-hand products under brand names if you want. However, make sure it is relevant. You will need at least 3 categories, each with at least 2 products.  -->
 <!-- 
 4. When the user clicks on a category on the home page, they will be redirected to the /category/:id route, where they will see second-hand products under that category only. The /category/:id page will have a column(s) of cards. It can be 1,2, or 3 columns. Each card will have a picture, name, location, resale price, original price, years of use, the time when it got posted, the seller's name; if the seller is verified, there will be a blue tick next to their name and a **Book now** button. -->
-the time when it got posted,
+<!-- the time when it got posted, -->
 <!-- *Please note, category:/id will be a private route*  -->
 
 <!-- 5. On clicking the Book now button, a form in a modal will popup with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked. -->
@@ -31,15 +31,18 @@ the time when it got posted,
 <!-- Users logged in by using social media will be considered as buyers.  -->
 
 
-7. If a user(buyer/seller/admin) is logged in, they will see **logout** (should be working) and another option on the header called Dashboard. The dashboard routes will change based on the users:
+<!-- 7. If a user(buyer/seller/admin) is logged in, they will see **logout** (should be working) and another option on the header called Dashboard. The dashboard routes will change based on the users: -->
 
-      **Buyers will see:** My orders(see bonus requirement 7),
+      <!-- **Buyers will see:** My orders(see bonus requirement 7), -->
 
       <!-- **Sellers will see:** Add A product (See Requirement 8), My Products(see requirement 9), My buyers(this one is optional). -->
 
       <!-- **Admin will see:** All Sellers, All Buyers (see requirement 12), Reported Items -->
 
-8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page.
+
+
+
+8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page. 
 
 9. On the **"My Products"** page, sellers can delete sales status (available or sold), price, and any other relevant information they want to show. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise.
 
