@@ -13,9 +13,8 @@ const AddProduct = () => {
     handleSubmit,
   } = useForm();
 
-  const date = format(new Date(), 'PP')
+  const date = format(new Date(), "PP");
   console.log(date);
-
 
   const navigate = useNavigate();
 
@@ -31,7 +30,7 @@ const AddProduct = () => {
     const url = `https://api.imgbb.com/1/upload?&key=${imagebb}`;
     fetch(url, {
       method: "POST",
-      
+
       body: formData,
     })
       .then((res) => res.json())
@@ -62,20 +61,23 @@ const AddProduct = () => {
             seller_name: user.displayName,
             email: user.email,
             brand_id: brand_id,
-            date_posted : date,
-            isAvailable : true,
-            location : data.location
+            date_posted: date,
+            isAvailable: true,
+            location: data.location,
           };
           console.log(product);
           //save products to db
-          fetch("http://localhost:2000/allProducts", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-              // authorization: `bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify(product),
-          })
+          fetch(
+            "https://assignment-12-server-farhatmahi.vercel.app/allProducts",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                // authorization: `bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: JSON.stringify(product),
+            }
+          )
             .then((res) => res.json())
             .then((data) => {
               console.log(data);

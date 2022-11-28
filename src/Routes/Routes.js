@@ -21,7 +21,6 @@ import SellerRoute from "./SellerRoute";
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Pages/Home/Home/Home");
 
-
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -42,7 +41,9 @@ const routes = createBrowserRouter([
       {
         path: "/brand/:id",
         loader: async ({ params }) =>
-          fetch(`http://localhost:2000/allProducts/${params.id}`),
+          fetch(
+            `https://assignment-12-server-farhatmahi.vercel.app/allProducts/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <BrandProducts />
@@ -63,7 +64,12 @@ const routes = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
-            element: <PrivateRoute> <Dashboard /></PrivateRoute>,
+            element: (
+              <PrivateRoute>
+                {" "}
+                <Dashboard />
+              </PrivateRoute>
+            ),
           },
           {
             path: "/dashboard/my-orders",
@@ -71,31 +77,50 @@ const routes = createBrowserRouter([
           },
           {
             path: "/dashboard/all-sellers",
-            element: <AdminRoute><AllSellers /></AdminRoute>,
-            
+            element: (
+              <AdminRoute>
+                <AllSellers />
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashboard/all-buyers",
-            element: <AdminRoute><AllBuyers /></AdminRoute>,
+            element: (
+              <AdminRoute>
+                <AllBuyers />
+              </AdminRoute>
+            ),
           },
           {
             path: "/dashboard/add-product",
-            element: <SellerRoute><AddProduct /></SellerRoute>,
+            element: (
+              <SellerRoute>
+                <AddProduct />
+              </SellerRoute>
+            ),
           },
           {
             path: "/dashboard/my-products",
-            element: <SellerRoute><MyProducts /></SellerRoute>,
+            element: (
+              <SellerRoute>
+                <MyProducts />
+              </SellerRoute>
+            ),
           },
           {
             path: "/dashboard/my-buyers",
-            element: <SellerRoute><MyBuyers /></SellerRoute>,
+            element: (
+              <SellerRoute>
+                <MyBuyers />
+              </SellerRoute>
+            ),
           },
         ],
       },
       {
-        path : '*',
-        element : <ErrorPage />
-      }
+        path: "*",
+        element: <ErrorPage />,
+      },
     ],
   },
 ]);

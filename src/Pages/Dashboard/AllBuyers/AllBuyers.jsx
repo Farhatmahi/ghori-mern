@@ -6,7 +6,9 @@ const AllBuyers = () => {
   const { data: all_buyers, refetch } = useQuery({
     queryKey: ["all-buyers"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:2000/users?role=buyer`);
+      const res = await fetch(
+        `https://assignment-12-server-farhatmahi.vercel.app/users?role=buyer`
+      );
       const data = await res.json();
       // console.log(data);
       return data;
@@ -14,21 +16,22 @@ const AllBuyers = () => {
   });
 
   const handleDelete = (id) => {
-    console.log(id)
-    fetch(`http://localhost:2000/users/${id}`, {
-      method : "DELETE",
-      headers : {
-        authorization : `bearer ${localStorage.getItem('accessToken')}`
-      }
-    }).then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.deletedCount > 0){
-        refetch()
-        toast.success("User deleted successfully")
-      }
+    console.log(id);
+    fetch(`https://assignment-12-server-farhatmahi.vercel.app/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success("User deleted successfully");
+        }
+      });
+  };
 
   return (
     <div>
@@ -52,7 +55,12 @@ const AllBuyers = () => {
                 <td>{buyer.name}</td>
                 <td>{buyer.email}</td>
                 <td>
-                  <button onClick={() => handleDelete(buyer._id)} className="btn btn-outline">Remove</button>
+                  <button
+                    onClick={() => handleDelete(buyer._id)}
+                    className="btn btn-outline"
+                  >
+                    Remove
+                  </button>
                 </td>
               </tr>
             ))}

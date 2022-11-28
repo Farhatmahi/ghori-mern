@@ -15,10 +15,10 @@ const BrandProducts = () => {
   const [hideModal, setHideModal] = useState(null);
   // console.log(hideModal);
   useEffect(() => {
-    fetch("http://localhost:2000/brands", {
-      headers : {
-        authorization : `bearer ${localStorage.getItem('accessToken')}`
-      }
+    fetch("https://assignment-12-server-farhatmahi.vercel.app/brands", {
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => setBrand(data));
@@ -33,7 +33,7 @@ const BrandProducts = () => {
   // const {data : products = []} = useQuery({t
   //   queryKey : ['products', products[0].brand_id],
   //   queryFn : async() => {
-  //     const res = await fetch(`http://localhost:2000/allProducts/${products[0].brand_id}`)
+  //     const res = await fetch(`https://assignment-12-server-farhatmahi.vercel.app/allProducts/${products[0].brand_id}`)
   //     return await res.json()
   //   }
   // })

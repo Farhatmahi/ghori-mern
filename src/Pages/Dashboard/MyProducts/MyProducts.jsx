@@ -4,18 +4,24 @@ import { AuthContext } from "../../../context/AuthProvider";
 import Loading from "../../../Shared/Loading/Loading";
 
 const MyProducts = () => {
-    const {user} = useContext(AuthContext)
-  const {data : myProducts = [], isLoading, refetch} = useQuery({
-    queryKey : ['my-products'],
-    queryFn : async() => {
-        const res = await fetch(`http://localhost:2000/allProducts?email=${user.email}`)
-        const data = await res.json()
-        return data
-    }
+  const { user } = useContext(AuthContext);
+  const {
+    data: myProducts = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["my-products"],
+    queryFn: async () => {
+      const res = await fetch(
+        `https://assignment-12-server-farhatmahi.vercel.app/allProducts?email=${user.email}`
+      );
+      const data = await res.json();
+      return data;
+    },
   });
 
-  if(isLoading){
-    return <Loading />
+  if (isLoading) {
+    return <Loading />;
   }
 
   return (
@@ -40,7 +46,9 @@ const MyProducts = () => {
                 <td>{product.resale_price}</td>
                 <td>Status</td>
                 <td>
-                  <button onClick={() => {}} className="btn btn-outline">Place Ad</button>
+                  <button onClick={() => {}} className="btn btn-outline">
+                    Place Ad
+                  </button>
                 </td>
               </tr>
             ))}

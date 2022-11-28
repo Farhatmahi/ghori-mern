@@ -38,8 +38,14 @@ const Register = () => {
         };
         updateUser(userInfo)
           .then((result) => {
-            let isVerified = false
-            saveToDatabase(data.fullName, data.email, data.role, data?.photoURL, isVerified);
+            let isVerified = false;
+            saveToDatabase(
+              data.fullName,
+              data.email,
+              data.role,
+              data?.photoURL,
+              isVerified
+            );
             setCreatedUserEmail(data.email);
             toast.success(`Welcome, ${data.fullName}`);
           })
@@ -69,7 +75,7 @@ const Register = () => {
 
   const saveToDatabase = (name, email, role, image, isVerified) => {
     const person = { name, email, role, image, isVerified };
-    fetch("http://localhost:2000/users", {
+    fetch("https://assignment-12-server-farhatmahi.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

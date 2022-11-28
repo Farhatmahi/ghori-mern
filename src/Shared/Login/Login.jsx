@@ -29,6 +29,7 @@ const Register = () => {
   }, [navigate, token, from]);
 
   const handleLogin = (data) => {
+    setError('')
     login(data.email, data.password)
       .then((result) => {
         const user = result.user;
@@ -112,6 +113,9 @@ const Register = () => {
             </p>
 
             <input type="submit" className="btn btn-outline w-full" />
+            {error && (
+              <p className="text-error text-xs mt-2 mb-3">{error}</p>
+            )}
             <div className="divider">OR</div>
             <button onClick={handleGoogle} className="btn btn-outline w-full">
               Continue with Google

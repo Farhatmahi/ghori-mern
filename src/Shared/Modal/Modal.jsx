@@ -4,10 +4,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const Modal = ({ hideModal, setHideModal }) => {
   const { user } = useContext(AuthContext);
-  const {product_name,
-    resale_price,
-    product_img
- } = hideModal
+  const { product_name, resale_price, product_img } = hideModal;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,10 +22,10 @@ const Modal = ({ hideModal, setHideModal }) => {
       location,
       product_name,
       resale_price,
-      product_img
+      product_img,
     };
 
-    fetch("http://localhost:2000/booking", {
+    fetch("https://assignment-12-server-farhatmahi.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -37,14 +34,13 @@ const Modal = ({ hideModal, setHideModal }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.acknowledged){
-          console.log(data)
-          setHideModal(null)
+        if (data.acknowledged) {
+          console.log(data);
+          setHideModal(null);
           console.log(hideModal);
-          toast.success("Booking confirmed!")
-        }
-        else{
-          toast.error(data.message)
+          toast.success("Booking confirmed!");
+        } else {
+          toast.error(data.message);
         }
       });
   };

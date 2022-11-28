@@ -6,7 +6,9 @@ const AllSellers = () => {
   const { data: all_sellers, refetch } = useQuery({
     queryKey: ["all-buyers"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:2000/users?role=seller`);
+      const res = await fetch(
+        `https://assignment-12-server-farhatmahi.vercel.app/users?role=seller`
+      );
       const data = await res.json();
       // console.log(data);
       return data;
@@ -14,26 +16,26 @@ const AllSellers = () => {
   });
 
   const handleDelete = (id) => {
-    console.log(id)
-    fetch(`http://localhost:2000/users/${id}`, {
-      method : "DELETE",
-      headers : {
-        authorization : `bearer ${localStorage.getItem('accessToken')}`
-      }
-    }).then(res => res.json())
-    .then(data => {
-      console.log(data)
-      if(data.deletedCount > 0){
-        refetch()
-        toast.success("User deleted successfully")
-      }
+    console.log(id);
+    fetch(`https://assignment-12-server-farhatmahi.vercel.app/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
     })
-  }
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          refetch();
+          toast.success("User deleted successfully");
+        }
+      });
+  };
 
-  const handleVerify = id => {
-    toast.success("Seller verified")
-  }
-
+  const handleVerify = (id) => {
+    toast.success("Seller verified");
+  };
 
   return (
     <div>
@@ -56,10 +58,19 @@ const AllSellers = () => {
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 <td>
-                  <button onClick={handleVerify} className='btn btn-outline'>Verify</button>
+                  <button onClick={handleVerify} className="btn btn-outline">
+                    Verify
+                  </button>
                 </td>
                 <td>
-                  <button onClick={() => {handleDelete(seller._id)}} className="btn btn-outline">Remove</button>
+                  <button
+                    onClick={() => {
+                      handleDelete(seller._id);
+                    }}
+                    className="btn btn-outline"
+                  >
+                    Remove
+                  </button>
                 </td>
               </tr>
             ))}

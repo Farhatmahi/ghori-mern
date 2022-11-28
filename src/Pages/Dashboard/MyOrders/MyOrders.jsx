@@ -5,21 +5,26 @@ import Loading from "../../../Shared/Loading/Loading";
 
 const MyOrders = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [myOrders, setMyOrders] = useState([])
+  const [myOrders, setMyOrders] = useState([]);
 
   const { data, isLoading } = useQuery({
     queryKey: ["myOrders", user?.email],
     queryFn: () => {
-      fetch(`http://localhost:2000/orders?email=${user?.email}`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        },
-      }).then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          logOut();
+      fetch(
+        `https://assignment-12-server-farhatmahi.vercel.app/orders?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          },
         }
-        return res.json();
-      }).then(data => setMyOrders(data))
+      )
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            logOut();
+          }
+          return res.json();
+        })
+        .then((data) => setMyOrders(data));
     },
   });
 
@@ -27,7 +32,7 @@ const MyOrders = () => {
     return <Loading />;
   }
 
-  console.log(myOrders)
+  console.log(myOrders);
 
   return (
     <div>
