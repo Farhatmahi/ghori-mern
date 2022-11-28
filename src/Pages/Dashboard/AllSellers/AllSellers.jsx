@@ -30,6 +30,11 @@ const AllSellers = () => {
     })
   }
 
+  const handleVerify = id => {
+    toast.success("Seller verified")
+  }
+
+
   return (
     <div>
       <h1 className="text-3xl mb-8">All Sellers</h1>
@@ -40,6 +45,7 @@ const AllSellers = () => {
               <th>Serial</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -47,9 +53,11 @@ const AllSellers = () => {
             {all_sellers?.map((seller, i) => (
               <tr className="hover">
                 <td>{i + 1}</td>
-
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
+                <td>
+                  <button onClick={handleVerify} className='btn btn-outline'>Verify</button>
+                </td>
                 <td>
                   <button onClick={() => {handleDelete(seller._id)}} className="btn btn-outline">Remove</button>
                 </td>

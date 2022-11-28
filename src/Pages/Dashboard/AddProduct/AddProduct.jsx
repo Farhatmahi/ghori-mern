@@ -62,7 +62,8 @@ const AddProduct = () => {
             seller_name: user.displayName,
             email: user.email,
             brand_id: brand_id,
-            date_posted : date
+            date_posted : date,
+            isAvailable : true,
           };
           console.log(product);
           //save products to db

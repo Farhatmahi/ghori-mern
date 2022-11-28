@@ -38,7 +38,8 @@ const Register = () => {
         };
         updateUser(userInfo)
           .then((result) => {
-            saveToDatabase(data.fullName, data.email, data.role, data.photoURL);
+            let isVerified = false
+            saveToDatabase(data.fullName, data.email, data.role, data?.photoURL, isVerified);
             setCreatedUserEmail(data.email);
             toast.success(`Welcome, ${data.fullName}`);
           })
@@ -66,8 +67,8 @@ const Register = () => {
       });
   };
 
-  const saveToDatabase = (name, email, role, image) => {
-    const person = { name, email, role, image };
+  const saveToDatabase = (name, email, role, image, isVerified) => {
+    const person = { name, email, role, image, isVerified };
     fetch("http://localhost:2000/users", {
       method: "POST",
       headers: {
