@@ -22,7 +22,7 @@ const DashboardLayout = () => {
           <label htmlFor="side-nav-btn" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-base-100 text-base-content">
             {!isAdmin && !isSeller && <li>
-              <Link to="/dashboard">My Orders</Link>
+              <Link to="/dashboard/my-orders">My Orders</Link>
             </li>}
             {isAdmin && (
               <>

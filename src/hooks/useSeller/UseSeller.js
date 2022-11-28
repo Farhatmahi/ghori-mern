@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useSeller = (email) => {
   const [isSeller, setIsSeller] = useState(false);
@@ -8,13 +8,14 @@ const useSeller = (email) => {
       fetch(`http://localhost:2000/users/seller/${email}`)
         .then((res) => res.json())
         .then((data) => {
-        //   console.log(data);
+          //   console.log(data);
           setIsSeller(data.isSeller);
+
           setIsSellerLoading(false);
         });
     }
-  }, [email, isSellerLoading]);
-  return [isSeller];
+  }, [email]);
+  return [isSeller, isSellerLoading];
 };
 
 export default useSeller;

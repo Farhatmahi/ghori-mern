@@ -56,6 +56,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setCreatedUserEmail(user.email);
         saveToDatabase(user.displayName, user.email, "buyer");
         setCreatedUserEmail(user.email);
         toast.success(`Welcome, ${user.displayName}`);

@@ -12,12 +12,13 @@ const ProductCard = ({ product, setHideModal }) => {
     years_of_use,
     location,
     isVerified,
+    date_posted
   } = product;
 
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
-        <img src={product_img} alt="Shoes" className="rounded-xl" />
+        <img src={product_img}  alt="Shoes" className="rounded-xl object-cover" />
       </figure>
       <div className="card-body">
         <div className="flex flex-row justify-between items-center">
@@ -40,6 +41,9 @@ const ProductCard = ({ product, setHideModal }) => {
         </p>
         <p>
           <small>Years of Use: {years_of_use}</small>
+        </p>
+        <p>
+          <small>Date posted: {date_posted}</small>
         </p>
         <div className="card-actions">
           <label

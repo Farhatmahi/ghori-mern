@@ -5,22 +5,11 @@ import Loading from "../../../Shared/Loading/Loading";
 
 const MyOrders = () => {
   const { user, logOut } = useContext(AuthContext);
-  // const [myOrders, setMyOrders] = useState({})
+  const [myOrders, setMyOrders] = useState([])
 
-  const { data: myOrders = [], isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["myOrders", user?.email],
     queryFn: () => {
-      // const res = await fetch(
-      //   `http://localhost:2000/orders?email=${user?.email}`,
-      //   {
-      //     headers: {
-      //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      //     },
-      //   }
-      // );
-      // const data = await res.json();
-      // console.log(data);
-      // return data;
       fetch(`http://localhost:2000/orders?email=${user?.email}`, {
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -30,13 +19,15 @@ const MyOrders = () => {
           logOut();
         }
         return res.json();
-      });
+      }).then(data => setMyOrders(data))
     },
   });
 
   if (isLoading) {
     return <Loading />;
   }
+
+  console.log(myOrders)
 
   return (
     <div>

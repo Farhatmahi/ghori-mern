@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
@@ -6,6 +8,7 @@ import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../Pages/Dashboard/AllSellers/AllSellers";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import MyBuyers from "../Pages/Dashboard/MyBuyers/MyBuyers";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyProducts from "../Pages/Dashboard/MyProducts/MyProducts";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -17,6 +20,7 @@ import SellerRoute from "./SellerRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../Pages/Home/Home/Home");
+
 
 const routes = createBrowserRouter([
   {
@@ -59,6 +63,10 @@ const routes = createBrowserRouter([
         children: [
           {
             path: "/dashboard",
+            element: <Dashboard />,
+          },
+          {
+            path: "/dashboard/my-orders",
             element: <MyOrders />,
           },
           {
@@ -72,11 +80,15 @@ const routes = createBrowserRouter([
           },
           {
             path: "/dashboard/add-product",
-            element: <><AddProduct /></>,
+            element: <SellerRoute><AddProduct /></SellerRoute>,
           },
           {
             path: "/dashboard/my-products",
-            element: <><MyProducts /></>,
+            element: <SellerRoute><MyProducts /></SellerRoute>,
+          },
+          {
+            path: "/dashboard/my-buyers",
+            element: <SellerRoute><MyBuyers /></SellerRoute>,
           },
         ],
       },

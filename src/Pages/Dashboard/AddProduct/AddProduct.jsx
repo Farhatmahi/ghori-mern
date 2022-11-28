@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import Loading from "../../../Shared/Loading/Loading";
+import { format } from "date-fns";
 
 const AddProduct = () => {
   const {
@@ -11,6 +12,10 @@ const AddProduct = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const date = format(new Date(), 'PP')
+  console.log(date);
+
 
   const navigate = useNavigate();
 
@@ -32,33 +37,48 @@ const AddProduct = () => {
       .then((imgData) => {
         console.log(imgData);
         if (imgData.success) {
+          let brand_id = "";
+          if (data.brand_name === "Rolex") {
+            brand_id = 3;
+          }
+          if (data.brand_name === "Titan") {
+            brand_id = 4;
+          }
+          if (data.brand_name === "Casio") {
+            brand_id = 1;
+          }
+          if (data.brand_name === "Seiko") {
+            brand_id = 2;
+          }
+
           const product = {
             product_name: data.product_name,
             brand_name: data.brand_name,
             original_price: data.original_price,
             resale_price: data.resale_price,
             years_of_use: parseInt(data.years_of_use),
-            image: imgData.data.url,
+            product_img: imgData.data.url,
             seller_name: user.displayName,
             email: user.email,
-            // brand_id: brand_id,
+            brand_id: brand_id,
+            date_posted : date
           };
           console.log(product);
           //save products to db
-            fetch("http://localhost:2000/allProducts", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-                authorization: `bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: JSON.stringify(product),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                console.log(data);
-                toast.success("Product uploaded");
-                navigate("/dashboard/my-products");
-              });
+          fetch("http://localhost:2000/allProducts", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(product),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              toast.success("Product uploaded");
+              navigate("/dashboard/my-products");
+            });
         }
       });
   };
