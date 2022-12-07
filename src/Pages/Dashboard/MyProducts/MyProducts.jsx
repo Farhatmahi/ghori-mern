@@ -24,9 +24,12 @@ const MyProducts = () => {
 
   const handlePlaceAd = (id) => {
     // setPlaced(false)
-    fetch(`http://localhost:2000/ads/product/${id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://assignment-12-server-farhatmahi.vercel.app/ads/product/${id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -42,7 +45,7 @@ const MyProducts = () => {
   };
 
   const handleDeleteProduct = (id) => {
-    fetch(`http://localhost:2000/product/${id}`, {
+    fetch(`https://assignment-12-server-farhatmahi.vercel.app/product/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,

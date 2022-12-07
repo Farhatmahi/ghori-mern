@@ -1,38 +1,33 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
 import Loading from "../../../Shared/Loading/Loading";
+import PaymentModal from "./PaymentModal";
 
 const MyOrders = () => {
   const { user, logOut } = useContext(AuthContext);
   const [myOrders, setMyOrders] = useState([]);
-
-  const { data, isLoading } = useQuery({
-    queryKey: ["myOrders", user?.email],
-    queryFn: () => {
-      fetch(
-        `https://assignment-12-server-farhatmahi.vercel.app/orders?email=${user?.email}`,
-        {
-          headers: {
-            authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          },
+  const [order, setOrder] = useState(null);
+  useEffect(() => {
+    fetch(
+      `https://assignment-12-server-farhatmahi.vercel.app/orders?email=${user?.email}`,
+      {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
+      .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          logOut();
         }
-      )
-        .then((res) => {
-          if (res.status === 401 || res.status === 403) {
-            logOut();
-          }
-          return res.json();
-        })
-        .then((data) => setMyOrders(data));
-    },
-  });
-
-  if (isLoading) {
-    return <Loading />;
-  }
+        return res.json();
+      })
+      .then((data) => setMyOrders(data));
+  }, [user?.email, logOut]);
 
   console.log(myOrders);
+  console.log(order);
 
   return (
     <div>
@@ -50,7 +45,7 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {myOrders?.map((orders, i) => (
-              <tr className="hover">
+              <tr key={orders._id} className="hover">
                 <th>{i + 1}</th>
                 <th>
                   <img src={orders.product_img} className="w-24" alt="" />
@@ -58,13 +53,16 @@ const MyOrders = () => {
                 <td>{orders.product_name}</td>
                 <td>${orders.resale_price}</td>
                 <td>
-                  <button className="btn btn-outline">Pay</button>
+                  <label htmlFor="payment-modal" onClick={() => setOrder(orders)} className="btn btn-outline">
+                    Pay
+                  </label>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {order && <PaymentModal order={order} />}
     </div>
   );
 };

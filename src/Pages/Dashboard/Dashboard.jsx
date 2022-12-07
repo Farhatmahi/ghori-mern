@@ -7,7 +7,7 @@ import useSeller from "../../hooks/useSeller/UseSeller";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user.email);
-  const [isSeller] = useSeller(user.email);
+  const [isSkeller] = useSeller(user.email);
   return (
     <div className="flex justify-center items-center">
         <h1 className='text-5xl mt-20'>Welcome to dashboard</h1>

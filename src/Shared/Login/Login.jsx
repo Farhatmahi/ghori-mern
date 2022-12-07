@@ -64,7 +64,7 @@ const Register = () => {
           <h1 className="text-5xl font-bold">Login</h1>
           <p className="py-6">To get access to all the cool features</p>
         </div>
-        <div className="lg:w-1/2 flex-shrink-0 max-w-md border border-yellow-500 p-10">
+        <div className="lg:w-1/2 flex-shrink-0 max-w-md border border-white p-10">
           <form onSubmit={handleSubmit(handleLogin)}>
             <div className="form-control w-full">
               <label className="label">

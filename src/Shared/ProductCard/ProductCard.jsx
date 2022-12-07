@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FcApproval } from "react-icons/fc";
+import { AuthContext } from "../../context/AuthProvider";
+import Loading from "../Loading/Loading";
 
 const ProductCard = ({ product, setHideModal }) => {
   const {
@@ -11,14 +13,38 @@ const ProductCard = ({ product, setHideModal }) => {
     seller_name,
     years_of_use,
     location,
-    isVerified,
-    date_posted
+    email,
+    date_posted,
   } = product;
 
+  const { loading } = useContext(AuthContext);
+  const [verified, setVerified] = useState("");
+
+  const url = `https://assignment-12-server-farhatmahi.vercel.app/users/verify/${email}`;
+
+  useEffect(() => {
+    fetch(
+      `https://assignment-12-server-farhatmahi.vercel.app/users/verify/${email}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.isVerified);
+        console.log(url, data.isVerified);
+        setVerified(data.isVerified);
+      });
+  }, [email]);
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="px-10 pt-10">
-        <img src={product_img}  alt="Shoes" className="rounded-xl object-cover" />
+        <img
+          src={product_img}
+          alt="Shoes"
+          className="rounded-xl object-cover"
+        />
       </figure>
       <div className="card-body">
         <div className="flex flex-row justify-between items-center">
@@ -33,7 +59,7 @@ const ProductCard = ({ product, setHideModal }) => {
         <p>
           <small>
             Seller Name : {seller_name}
-            {isVerified && <FcApproval className="inline ml-2" />}
+            {verified && <FcApproval className="inline ml-2" />}
           </small>
         </p>
         <p>

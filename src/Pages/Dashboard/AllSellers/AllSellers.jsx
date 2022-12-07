@@ -34,7 +34,25 @@ const AllSellers = () => {
   };
 
   const handleVerify = (id) => {
-    toast.success("Seller verified");
+    // console.log(id)
+    fetch(
+      `https://assignment-12-server-farhatmahi.vercel.app/users/verified/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          toast.success("User verified");
+        }
+        if (data.modifiedCount === 0) {
+          toast("Already verified");
+        }
+      });
   };
 
   return (
@@ -58,7 +76,12 @@ const AllSellers = () => {
                 <td>{seller.name}</td>
                 <td>{seller.email}</td>
                 <td>
-                  <button onClick={handleVerify} className="btn btn-outline">
+                  <button
+                    onClick={() => {
+                      handleVerify(seller._id);
+                    }}
+                    className="btn btn-outline"
+                  >
                     Verify
                   </button>
                 </td>

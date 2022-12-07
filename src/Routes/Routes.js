@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthProvider";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import Blogs from "../Pages/Blogs/Blogs";
@@ -66,7 +64,6 @@ const routes = createBrowserRouter([
             path: "/dashboard",
             element: (
               <PrivateRoute>
-                {" "}
                 <Dashboard />
               </PrivateRoute>
             ),

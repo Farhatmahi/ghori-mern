@@ -8,7 +8,7 @@ const Loading = () => {
         height="80"
         width="80"
         radius="48"
-        color="#dca54b"
+        color="#ffffff"
         ariaLabel="watch-loading"
         wrapperStyle={{}}
         wrapperClassName=""
