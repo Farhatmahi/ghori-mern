@@ -28,8 +28,8 @@ const ProductCard = ({ product, setHideModal }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.isVerified);
-        console.log(url, data.isVerified);
+        // console.log(data.isVerified);
+        // console.log(url, data.isVerified);
         setVerified(data.isVerified);
       });
   }, [email]);
@@ -48,7 +48,7 @@ const ProductCard = ({ product, setHideModal }) => {
       </figure>
       <div className="card-body">
         <div className="flex flex-row justify-between items-center">
-          <h2 className="card-title text-center">{product_name}</h2>
+          <h2 className="card-title text-left">{product_name}</h2>
           <div className="badge badge-outline">{brand_name}</div>
         </div>
 

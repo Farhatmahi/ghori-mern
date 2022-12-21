@@ -21,6 +21,7 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  console.log(createdUserEmail);
   const [token] = useToken(createdUserEmail);
 
   if (token) {
@@ -33,6 +34,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setCreatedUserEmail(data.email);
         const userInfo = {
           displayName: data.fullName,
         };
@@ -46,9 +48,9 @@ const Register = () => {
               data?.photoURL,
               isVerified
             );
-            setCreatedUserEmail(data.email);
+
             toast.success(`Welcome, ${data.fullName}`);
-            navigate('/')
+            navigate("/");
           })
           .catch((err) => {});
       })

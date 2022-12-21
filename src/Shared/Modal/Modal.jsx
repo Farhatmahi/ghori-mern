@@ -55,61 +55,73 @@ const Modal = ({ hideModal, setHideModal }) => {
             <h2 className="text-2xl">{product_name}</h2>
             <p>Price : {resale_price}</p>
           </div>
-          {user ? <form onSubmit={handleSubmit} className="card-body grid grid-cols-1">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Name"
-                defaultValue={user?.displayName}
-                readOnly
-                className="input input-bordered"
-              />
+          {user ? (
+            <form
+              onSubmit={handleSubmit}
+              className="card-body grid grid-cols-1"
+            >
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  defaultValue={user?.displayName}
+                  readOnly
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  readOnly
+                  defaultValue={user?.email}
+                  placeholder="email"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Location</span>
+                </label>
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Location"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Phone No.</span>
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone no."
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control mt-6">
+                <input type="submit" className="btn btn-primary"></input>
+              </div>
+            </form>
+          ) : (
+            <div className="flex flex-col justify-center items-center">
+              <h1 className="mt-10 mb-5">Please Log in</h1>
+              <Link to="/login" className="btn btn-outline">
+                Log in
+              </Link>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="text"
-                name="email"
-                readOnly
-                defaultValue={user?.email}
-                placeholder="email"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Location</span>
-              </label>
-              <input
-                type="text"
-                name="location"
-                placeholder="Location"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Phone No.</span>
-              </label>
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone no."
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control mt-6">
-              <input type="submit" className="btn btn-primary"></input>
-            </div>
-          </form> : <div className='flex flex-col justify-center items-center'><h1 className='mt-10 mb-5'>Please Log in</h1><Link to='/login' className="btn btn-outline">Log in</Link></div>}
+          )}
         </label>
       </label>
     </div>
